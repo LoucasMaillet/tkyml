@@ -1,0 +1,61 @@
+# Here is defined our UI
+---
+:title: Notepad
+:geometry: 800x400
+:bg: white
+
+menu:
+    :type: Menu
+    :font: Segoe
+
+    file_menu:
+        :type: Menu
+        :label: File
+        :tearoff: 0
+        ::
+            - nbuttons:
+                - New Window
+                - Open File
+            - add_separator:
+            - nbuttons:
+                - Save
+                - Save as ...
+            - add_separator:
+            - nbuttons:
+                - Exit
+
+    edit_menu:
+        :type: Menu
+        :label: Edit
+        :tearoff: 0
+
+        ::
+            - nbuttons:
+                - Undo
+                - Redo
+            - add_separator:
+            - nbuttons:
+                - Cut
+                - Copy
+                - Paste
+
+    help_button:
+        :type: Menubutton
+        :label: Help
+
+main:
+    :type: Text
+    :pack: {padx: 10, pady: 5, fill: both, expand: True}
+    :borderwidth: 0
+    :text: Write here
+    :wrap: none
+    :scroll: 
+        x: True
+        y: True
+
+    .focus:
+        :fg: black
+
+    .unfocus: &unfocus_color
+        :fg: grey
+    <<: *unfocus_color

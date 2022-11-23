@@ -1,0 +1,22 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "tkyml"
+version = "0.0.5"
+authors = [{ name = "Lucas Maillet", email = "loucas.maillet.pro@gmail.com" }]
+description = "A python implementation to separate declarative and functional code of a tkinter UI"
+readme = "README.md"
+requires-python = ">=3.11"
+classifiers = [
+  "Programming Language :: Python :: 3",
+  "License :: OSI Approved :: MIT License",
+  "Operating System :: OS Independent",
+]
+dependencies = ["pyyaml == 6.0", "pillow == 9.3.0", "pywin32 == 305"]
+
+[project.urls]
+"Repository" = "https://github.com/LoucasMaillet/tkyml"
+"Documentation" = "https://github.com/LoucasMaillet/tkyml/docs"
+"Bug Tracker" = "https://github.com/LoucasMaillet/tkyml/issues"
