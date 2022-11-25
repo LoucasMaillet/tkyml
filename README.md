@@ -1,4 +1,4 @@
-[![Version](https://img.shields.io/pypi/v/tkyml?color=blue)](https://pypi.org/project/tkyml/0.0.1/)
+[![Version](https://img.shields.io/pypi/v/tkyml?color=blue)](https://pypi.org/project/tkyml/)
 [![MIT License](https://img.shields.io/badge/License-MIT-green.svg)](https://github.com/LoucasMaillet/tkyml/blob/master/LICENSE/)
 
 
@@ -13,7 +13,7 @@ also you should go check the [exemples](https://github.com/LoucasMaillet/tkyml/t
 
 ## Installation
 
-It is now available on pypi [here](https://test.pypi.org/project/tkyml/) so you can go along with :
+It is now available on pypi [here](https://pypi.org/project/tkyml/) so you can go along with :
 
 `pip install tkyml`
 

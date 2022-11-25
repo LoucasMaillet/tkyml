@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "tkyml"
-version = "0.0.5"
+version = "0.0.2"
 authors = [{ name = "Lucas Maillet", email = "loucas.maillet.pro@gmail.com" }]
 description = "A python implementation to separate declarative and functional code of a tkinter UI"
 readme = "README.md"
@@ -14,7 +14,7 @@ classifiers = [
   "License :: OSI Approved :: MIT License",
   "Operating System :: OS Independent",
 ]
-dependencies = ["pyyaml == 6.0", "pillow == 9.3.0", "pywin32 == 305"]
+dependencies = ["pyyaml >= 6.0", "pillow >= 9.3.0", "pywin32 >= 305", "tkextrafont >= 0.6.3"]
 
 [project.urls]
 "Repository" = "https://github.com/LoucasMaillet/tkyml"

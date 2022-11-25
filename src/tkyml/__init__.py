@@ -34,7 +34,9 @@ from multiprocessing import Process
 from itertools import count, cycle
 from inspect import ismethod
 from enum import StrEnum
+from pathlib import Path
 from PIL import Image, ImageTk, ImageColor
+from tkextrafont import Font
 from tkinter import ttk
 import tkinter as tk
 import win32gui
@@ -46,7 +48,7 @@ import yaml
 __author__ = "Lucas Maillet"
 __email__ = "loucas.maillet.pro@gmail.com"
 __license__ = "MIT"
-__version__ = "0.0.5"
+__version__ = "0.0.2"
 __status__ = "Production"
 __repository__ = "https://github.com/LoucasMaillet/tkyml"
 
@@ -57,11 +59,20 @@ class _Prefix(StrEnum):
     ATTR = ':'
     CLASS = '.'
 
-
 LABEL_ATTR = _Prefix.ATTR + "label"
 MODE_ATTR = _Prefix.ATTR + "mode"
 END = tk.END + "-1c"
 MODE_ERROR = TypeError("Mode not found, please refer to docstring.")
+
+# For yaml parser
+TAG_YML_SEQ = "tag:yaml.org,2002:seq"
+
+
+def __construct_sequence(loader, node):
+    yield tuple(loader.construct_sequence(node))
+
+
+yaml.add_constructor(TAG_YML_SEQ, __construct_sequence) # Load sequence as tuple (optimized)
 
 
 # Functions
@@ -126,13 +137,14 @@ class __Widget:
                     if hasattr(self, key):
                         if isinstance(val, dict):
                             getattr(self, key)(**val)
+                        elif val == None:
+                            getattr(self, key)()
                         else:
                             getattr(self, key)(val)
                     elif key == '':
                         self.__attributes(val)
                     else:
                         self.configure({key: val})
-                        self[key] = val
 
                 case _Prefix.CLASS:
                     self.__class[key[1:]] = val
@@ -141,8 +153,9 @@ class __Widget:
                     continue
 
                 case _:
-                    getattr(WIDGETS, val.pop(_Prefix.ATTR + "type"))(self, key, val)
-        
+                    getattr(WIDGETS, val.pop(
+                        _Prefix.ATTR + "type"))(self, key, val)
+
     def upd_values(self, values: dict[str, any]):
         """Update attributes, methods, ... from values.
 
@@ -156,6 +169,8 @@ class __Widget:
                     if hasattr(self, key):
                         if isinstance(val, dict):
                             getattr(self, key)(**val)
+                        elif val == None:
+                            getattr(self, key)()
                         else:
                             getattr(self, key)(val)
                     elif key == '':
@@ -163,21 +178,18 @@ class __Widget:
                     else:
                         self.configure({key: val})
 
-                case _Prefix.CLASS:
-                    self.__class[key[1:]] = val
-
                 case _Prefix.HID:  # Variable declaration
                     continue
 
                 case _:
                     self.nametowidget(key).upd_values(val)
 
-    def clear(self, _: None):
+    def child_destroy(self, name: None):
         """Remove all childs."""
         for child in self.winfo_children():
             child.destroy()
 
-    def event(self, name: str, add=False) -> Callable:
+    def event(self, name: str, add=True) -> Callable:
         """Link a function to some event. 
 
         Args:
@@ -320,8 +332,7 @@ class App(tk.Tk, __Widget):
         super().__init__(*args, **kwargs)
         self.update_idletasks()  # Required to get size
         with open(file, 'r') as file:
-            values = yaml.load(file, Loader=yaml.SafeLoader)
-            self.set_values(values)
+            self.set_values(yaml.load(file, Loader=yaml.SafeLoader))
 
     @classmethod
     def new(cls, *args: any, **kwargs: dict[str, any]) -> App:
@@ -346,7 +357,9 @@ class App(tk.Tk, __Widget):
             return fn
         return wrapper
 
-
+    def loadfont(self, fontpath: str):
+        Font(self, file=fontpath, name=Path(fontpath).name)
+        
 # Widgets build class
 
 
@@ -360,7 +373,7 @@ class WIDGETS:
         """Image widget based on tkinter's Label
         """
 
-        __img: Image.Image 
+        __img: Image.Image
         __frame: ImageTk.PhotoImage
 
         def _resize_contain(self, ev: tk.Event):

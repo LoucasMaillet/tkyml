@@ -81,6 +81,13 @@ is the name of the widget class.
     Returns:
         Callable: Sub wrapper function.
 
+`loadfont(self, fontpath: str)`
+:   Load custom font from file.
+
+    Args:
+        fontpath (str): Path to the font file (.otf, .tff, ...).
+
+
 ## `WIDGETS` 
 
 The widgets container
