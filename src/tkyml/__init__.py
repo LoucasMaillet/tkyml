@@ -27,22 +27,32 @@ properties and widgets with this syntax:
         ::     ...  ->  Declare a list of methods/attributes, so you can use the same two time in a row.
 """
 
-
+# Typing
 from __future__ import annotations
 from typing import Callable, Iterable
-from multiprocessing import Process
-from itertools import count, cycle
-from inspect import ismethod
 from enum import StrEnum
-from pathlib import Path
-from PIL import Image, ImageTk, ImageColor
-from tkextrafont import Font
+
+# To build application
+from multiprocessing import Process
+from inspect import ismethod
+import yaml
+
+# For tkinter app / wigdget
 from tkinter import ttk
 import tkinter as tk
+
+# To load custom fonts
+from tkextrafont import Font
+from pathlib import Path
+
+# For image widgets
+from PIL import Image, ImageTk, ImageColor
+from itertools import count, cycle
+
+# For transparent widgets
 import win32gui
 import win32api
 import win32con
-import yaml
 
 
 __author__ = "Lucas Maillet"
@@ -330,7 +340,6 @@ class App(tk.Tk, __Widget):
 
     def __init__(self, file: str, *args: any, **kwargs: dict[str, any]):
         super().__init__(*args, **kwargs)
-        self.update_idletasks()  # Required to get size
         with open(file, 'r') as file:
             self.set_values(yaml.load(file, Loader=yaml.SafeLoader))
 
