@@ -18,7 +18,7 @@ Syntax of a yaml file template that declare a tkinter UI.
 
     .name: {...} ->  Declare a class varation of the widget
 
-    name: {...} ->  Declare a child of current widget
+    name: {...} ->  Declare a child of the current widget
 
 ### Specials terms
 
