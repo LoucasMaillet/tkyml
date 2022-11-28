@@ -22,9 +22,8 @@ Syntax of a yaml file template that declare a tkinter UI.
 
 ### Specials terms
 
-    :type: ...  ->  Declare type of widget, derived eiter from tk, ttk or style.py (as st).
-                    Use with a prefix from the module: tk.<widget_class_name> or ttk.<widget_class_name>
-                    or cst.<widget_class_name>
+    :type: ...  ->  Declare type of widget, derived eiter from tk and ttk or custom made (see in WIDGETS).
+                    The one derived from ttk take a "T" prefix on their original name (like TButton).
 
     ::     ...  ->  Declare a list of methods/attributes, so you can use the same two time in a row.
 
