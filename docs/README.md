@@ -14,7 +14,7 @@ Syntax of a yaml file template that declare a tkinter UI.
     :name: ...  ->  Declare an attribute / call a method (accept
                     either only 1 positional arg or some **kwargs).
 
-    _name: ...  ->  Declare an hidden variable.
+    _name: ...  ->  Declare an hidden value (not related with anything in tkyml).
 
     .name: {...} ->  Declare a class varation of the widget
 
