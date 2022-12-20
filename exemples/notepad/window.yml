@@ -13,15 +13,15 @@ menu:
         :label: File
         :tearoff: 0
         ::
-            - nbuttons:
+            - button:
                 - New Window
                 - Open File
             - add_separator:
-            - nbuttons:
+            - button:
                 - Save
                 - Save as ...
             - add_separator:
-            - nbuttons:
+            - button:
                 - Exit
 
     edit_menu:
@@ -30,11 +30,11 @@ menu:
         :tearoff: 0
 
         ::
-            - nbuttons:
+            - button:
                 - Undo
                 - Redo
             - add_separator:
-            - nbuttons:
+            - button:
                 - Cut
                 - Copy
                 - Paste
@@ -47,7 +47,7 @@ main:
     :type: Text
     :pack: {padx: 10, pady: 5, fill: both, expand: True}
     :borderwidth: 0
-    :text: Write here
+    :value: Write here
     :wrap: none
     :scroll: 
         x: True
@@ -58,4 +58,5 @@ main:
 
     .unfocus: &unfocus_color
         :fg: grey
+        
     <<: *unfocus_color

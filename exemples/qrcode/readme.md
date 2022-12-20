@@ -1,0 +1,1 @@
+A simple UI implementation of the python module `qrcode` with `tkyml`. Show the usage of the `WidgetMap` class and the function `define` to add new classes to our app, with also the implementation of variants styling.

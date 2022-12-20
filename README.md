@@ -11,13 +11,17 @@ It's fully python based so it may be not very fast but it will do the thing on s
 See more about the syntax and plus in the [documentations](https://github.com/LoucasMaillet/tkyml/tree/master/docs),
 also you should go check the [exemples](https://github.com/LoucasMaillet/tkyml/tree/master/exemples) to learn a bit more.
 
-## Installation
+## Warning
+
+The project isn't available on other OS than windows due to depencies of some windows only modules allowing transparency on widget.
+
+# Installation
 
 It is now available on pypi [here](https://pypi.org/project/tkyml/) so you can go along with :
 
 `pip install tkyml`
 
-## Authors
+# Authors
 
 - [@LoucasMaillet](https://www.github.com/LoucasMaillet)
 
