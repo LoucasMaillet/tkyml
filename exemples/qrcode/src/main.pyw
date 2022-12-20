@@ -13,7 +13,7 @@ import tkyml as tkyml
 from qrcode.image.svg import SvgPathImage
 import qrcode
 
-# Fro relative path & extention
+# For relative path & file extention
 import os
 
 
